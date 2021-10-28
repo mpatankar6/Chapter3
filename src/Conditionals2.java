@@ -47,6 +47,8 @@ public class Conditionals2 {
     public static boolean makeBench(int small, int big, int goal) {
         if (small * 1 + big * 5 == goal) {
             return true;
+        } else if (small * 1 >= goal - 5 * (goal / (5*big))) {
+            return true;
         } else {
             return big * 5 == goal || small == goal;
         }
