@@ -1,6 +1,5 @@
 public class Conditionals2 {
 
-
     public static boolean isLeapYear(int year) {
         if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
             return true;
@@ -26,22 +25,24 @@ public class Conditionals2 {
     }
 
     public static int findBestFit(int size1, int size2, int space) {
-        int areturn;
+
         if (size1 <= space || size2 <= space) {
             if (size1 + size2 <= space) {
-                areturn = 3;
-            } else if (size1 <= space) {
-                areturn = 2;
-            } else if (size1 <= space && size1 <= size2) {
-                areturn = 1;
-            } else if (size2 <= space && size2 <= size1){
-                areturn = 2;
+                return 3;
+            } else if (size1 > space && size2 <= space) {
+                return 2;
+            } else if (size2 > space && size1 <= space) {
+                return 1;
+            } else if (size1 <= space && size1 > size2) {
+                return 1;
+            } else if (size2 <= space && size2 > size1){
+                return 2;
+            } else {
+                return 0;
             }
         } else {
-            areturn = 0;
+            return 0;
         }
-
-        return 0;
     }
 
     public static boolean makeBench(int small, int big, int goal) {
@@ -53,7 +54,6 @@ public class Conditionals2 {
             return big * 5 == goal || small == goal;
         }
     }
-
 
     public static void main(String[] args) {
         // leap year
@@ -93,3 +93,34 @@ public class Conditionals2 {
         System.out.println("Make benches 2 6 23 is " + makeBench(2,6,23));
     }
 }
+
+/*
+2000true
+2004true
+2003false
+2100false
+1/2/2010 is later than 1/2/2011 false
+2/1/2011 is later than 2/2/2010 true
+1/2/2011 is later than 2/2/2010 true
+1/5/2010 is later than 3/2/2010 false
+3/2/2010 is later than 1/2/2010 true
+1/3/2010 is later than 1/2/2010 true
+5/2/2010 is later than 1/3/2011 false
+1/2/2010 is later than 1/2/2010 false
+4/8/2010 is later than 1/2/2010 true
+Find Best fit 2 3 6 is 3
+Find Best fit 4 3 6 is 1
+Find Best fit 3 4 6 is 2
+Find Best fit 2 3 1 is 0
+Find Best fit 6 3 4 is 2
+Find Best fit 3 6 4 is 1
+Make bench 3 1 8 is true
+Make bench 3 1 9 is false
+Make bench 11 1 15 is true
+Make bench 4 2 15 is false
+Make bench 20 0 20 is true
+Make bench 3 4 20 is true
+Make bench 0 6 30 is true
+Make bench 0 5 30 is false
+Make benches 2 6 23 is false
+ */

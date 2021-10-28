@@ -27,17 +27,18 @@ public class DualSpinner {
 
         if (player > computer) {
             System.out.println("You win! " + (player - computer) + " points");
+            turn = 0;
         } else if (computer > player) {
             System.out.println("You lose. " + (player - computer) + " points");
-        } else if (computer == player && turn < 2) {
+            turn = 0;
+        } else if (computer == player) {
+            System.out.println("Spinning Again");
             turn++;
             playRound();
         } else {
             System.out.println("Tie. 0 points");
         }
     }
-
-
 
     public static void main(String[] args) {
         DualSpinner ds = new DualSpinner();
